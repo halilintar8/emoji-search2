@@ -19,6 +19,12 @@ Usage
 
 
 
+Credited by
+---
+
+[https://github.com/ahfarmer/emoji-search.git](https://github.com/ahfarmer/emoji-search.git)
+
+
 How To
 ---
 
