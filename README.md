@@ -22,13 +22,13 @@ Usage
 Credited by
 ---
 
-[https://github.com/ahfarmer/emoji-search.git](https://github.com/ahfarmer/emoji-search.git)
+https://github.com/ahfarmer/emoji-search.git
 
 
 How To
 ---
 
-for ubuntu 18.04,  install these required software :
+for ubuntu 18,  install these required software :
 - virtualbox virtualbox-ext-pack
 - docker
 - npm
@@ -46,7 +46,6 @@ create = provisioning.sh
 - run provisioning.sh
 
 then run = minikube service my-emoji-search --url
-- my output example = http://192.168.99.100:31000/
-- open this url in your browser
+- open the output url in your browser
 
 
