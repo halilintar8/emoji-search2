@@ -22,7 +22,7 @@ Usage
 How To
 ---
 
-for ubuntu 18.04,  install these required software :
+for ubuntu 18,  install these required software :
 - virtualbox virtualbox-ext-pack
 - docker
 - npm

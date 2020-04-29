@@ -5,12 +5,12 @@
   "homepage": "http://ahfarmer.github.io",
   "devDependencies": {
     "gh-pages": "^2.0.1",
-    "prettier": "^1.17.1",
+    "prettier": "^2.0.5",
     "react-scripts": "^3.0.1"
   },
   "dependencies": {
     "clipboard": "^2.0.4",
-    "github-fork-ribbon-css": "^0.2.1",
+    "github-fork-ribbon-css": "^0.2.3",
     "react": "^16.8.6",
     "react-dom": "^16.8.6"
   },
