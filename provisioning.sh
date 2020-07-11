@@ -1,6 +1,7 @@
 #!/bin/bash
 
 #git clone https://github.com/ahfarmer/emoji-search.git
+
 git clone https://github.com/halilintar8/emoji-search2.git
 cd emoji-search2
 echo "node_modules" > .dockerignore
@@ -50,6 +51,7 @@ EOF
 
 sed -i 's|http://ahfarmer.github.io/emoji-search|http://ahfarmer.github.io|g' package.json
 npm install
+npm audit fix
 yarn build
 docker build -t my-emoji-search .
 docker run -d -p 5000:5000 --restart=always --name registry registry:2
