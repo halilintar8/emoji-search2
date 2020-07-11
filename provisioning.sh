@@ -1,7 +1,8 @@
 #!/bin/bash
 
-git clone https://github.com/ahfarmer/emoji-search.git
-cd emoji-search
+#git clone https://github.com/ahfarmer/emoji-search.git
+git clone https://github.com/halilintar8/emoji-search2.git
+cd emoji-search2
 echo "node_modules" > .dockerignore
 
 cat <<EOF > Dockerfile

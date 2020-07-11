@@ -4,7 +4,7 @@
   "license": "MIT",
   "homepage": "http://ahfarmer.github.io",
   "devDependencies": {
-    "gh-pages": "^2.0.1",
+    "gh-pages": "^3.1.0",
     "prettier": "^2.0.5",
     "react-scripts": "^3.0.1"
   },
