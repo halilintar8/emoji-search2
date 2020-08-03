@@ -25,12 +25,18 @@ pipeline{
           steps{
               echo 'Running build automation'
             //   sh 'cd emoji-search2'
-              sh 'npm install'
-              sh 'npm audit fix'
-              sh 'yarn build'
+            //   sh 'npm install'
+            //   sh 'npm audit fix'
+            //   sh 'yarn build'
+
             //   container("maven") {
-            //       sh "mvn package -B -DskipTests"
+            //   sh "mvn package -B -DskipTests"
             //   }
+              container("npm") {
+              sh "npm install"
+              sh "npm audit fix"
+              sh "yarn build"
+              }
           }
         }
 
