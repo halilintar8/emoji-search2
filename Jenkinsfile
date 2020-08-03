@@ -1,7 +1,8 @@
 pipeline{
     // 定义groovy脚本中使用的环境变量
     environment{        
-    IMAGE_TAG =  sh(returnStdout: true,script: 'echo $image_tag').trim()
+    // IMAGE_TAG =  sh(returnStdout: true,script: 'echo $image_tag').trim()
+    IMAGE_TAG = "latest"
     ORIGIN_REPO =  sh(returnStdout: true,script: 'echo $origin_repo').trim()
     REPO =  sh(returnStdout: true,script: 'echo $repo').trim()
     BRANCH =  sh(returnStdout: true,script: 'echo $branch').trim()
@@ -53,7 +54,7 @@ pipeline{
                     // sh "docker run -d -p 5000:5000 --restart=always --name registry registry:2"
                     // sh "docker run -d -p 5000:5000 --name registry registry:2"
                     // sh "docker build -t halilintar8/my-emoji-search:latest ."
-                    echo "build docker image selesai"
+                    // echo "build docker image selesai"
                 }
             }          
         }
@@ -71,10 +72,10 @@ pipeline{
                         //app.push("${env.DOCKER_IMAGE_NAME}")
                         //app.push("latest")
 
-                        sh "docker tag ${ORIGIN_REPO}/${REPO} ${ORIGIN_REPO}/${REPO}:latest"
-                        sh "docker push ${ORIGIN_REPO}/${REPO}:latest"
-                        // sh "docker tag ${ORIGIN_REPO}/${REPO} ${ORIGIN_REPO}/${REPO}:${IMAGE_TAG}"
-                        // sh "docker push ${ORIGIN_REPO}/${REPO}:${IMAGE_TAG}"
+                        // sh "docker tag ${ORIGIN_REPO}/${REPO} ${ORIGIN_REPO}/${REPO}:latest"
+                        // sh "docker push ${ORIGIN_REPO}/${REPO}:latest"
+                        sh "docker tag ${ORIGIN_REPO}/${REPO} ${ORIGIN_REPO}/${REPO}:${IMAGE_TAG}"
+                        sh "docker push ${ORIGIN_REPO}/${REPO}:${IMAGE_TAG}"
 
 
                       }
