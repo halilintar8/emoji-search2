@@ -53,29 +53,48 @@ pipeline{
                     // sh "docker run -d -p 5000:5000 --restart=always --name registry registry:2"
                     // sh "docker run -d -p 5000:5000 --name registry registry:2"
                     // sh "docker build -t halilintar8/my-emoji-search:latest ."
-                    sh "echo 'build docker image selesai'"
+                    echo "build docker image selesai"
                 }
             }          
         }
 
-        stage("Push image to Docker Hub") {
+        stage('Push Docker Image') {       
             steps {
-                echo "${IMAGE_TAG}"
-                echo "latestb"
                 container('docker') {
-                    echo "Push docker image to hub.docker.com"
-                    script {
-                        docker.withRegistry('', 'hub_docker_halilintar8') {
-                            sh "docker tag ${ORIGIN_REPO}/${REPO} ${ORIGIN_REPO}/${REPO}:${IMAGE_TAG}"
-                            sh "docker push ${ORIGIN_REPO}/${REPO}:${IMAGE_TAG}"
+                  echo "Push docker image to hub.docker.com"
+                    script {                      
+                      docker.withRegistry('', 'hub_docker_halilintar8') {
+                        //app.push("${env.BUILD_NUMBER}")
+                        
+                        //app.push("${env.DOCKER_IMAGE_NAME}")
+                        //app.push("latest")
 
-                            // sh "docker tag halilintar8/my-emoji-search halilintar8/my-emoji-search:latest"
-                            // sh "docker push halilintar8/my-emoji-search:latest"
-                        }
+                        sh "docker tag halilintar8/my-emoji-search halilintar8/my-emoji-search:latest"
+                        sh "docker push ${ORIGIN_REPO}/${REPO}:${IMAGE_TAG}"
+                      }
                     }
                 }
             }
         }
+
+        // stage("Push image to Docker Hub") {
+        //     steps {
+        //         echo "${IMAGE_TAG}"
+        //         echo "latestb"
+        //         container('docker') {
+        //             echo "Push docker image to hub.docker.com"
+        //             script {
+        //                 docker.withRegistry('', 'hub_docker_halilintar8') {
+        //                     sh "docker tag ${ORIGIN_REPO}/${REPO} ${ORIGIN_REPO}/${REPO}:${IMAGE_TAG}"
+        //                     sh "docker push ${ORIGIN_REPO}/${REPO}:${IMAGE_TAG}"
+
+        //                     // sh "docker tag halilintar8/my-emoji-search halilintar8/my-emoji-search:latest"
+        //                     // sh "docker push halilintar8/my-emoji-search:latest"
+        //                 }
+        //             }
+        //         }
+        //     }
+        // }
         
         stage('Deploy to Kubernetes') {
             steps {
