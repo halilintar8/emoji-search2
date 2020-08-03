@@ -11,10 +11,10 @@ pipeline{
         node{
           label 'slave-pipeline'
         }
-        docker {
-            image 'node:6-alpine' 
-            args '-p 3000:3000' 
-        }
+        // docker {
+        //     image 'node:6-alpine' 
+        //     args '-p 3000:3000' 
+        // }
       }
 
       stages{
@@ -36,7 +36,7 @@ pipeline{
             //   container("maven") {
             //   sh "mvn package -B -DskipTests"
             //   }
-              container("npm") {
+              container("npm-yarn") {
               sh "npm install"
               sh "npm audit fix"
               sh "yarn build"
