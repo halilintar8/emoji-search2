@@ -24,7 +24,7 @@ pipeline{
         stage('Package'){
           steps{
               echo 'Running build automation'
-              sh 'cd emoji-search2'
+            //   sh 'cd emoji-search2'
               sh 'npm install'
               sh 'npm audit fix'
               sh 'yarn build'
