@@ -48,7 +48,7 @@ pipeline{
             steps{
                 echo "Building docker image"
                 container('docker') {
-                    sh "docker build -t ${ORIGIN_REPO}/${REPO} ."
+                    sh "docker build -t ${ORIGIN_REPO}/${REPO}:${IMAGE_TAG} ."
                     // sh "docker build -t halilintar8/my-emoji-search:latest ."
                 }
             }          
