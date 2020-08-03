@@ -70,7 +70,7 @@ pipeline{
                         //app.push("latest")
 
                         sh "docker tag halilintar8/my-emoji-search halilintar8/my-emoji-search:latest"
-                        sh "docker push ${ORIGIN_REPO}/${REPO}:${IMAGE_TAG}"
+                        sh "docker push halilintar8/my-emoji-search:latest"
                       }
                     }
                 }
