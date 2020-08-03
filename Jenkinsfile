@@ -48,7 +48,9 @@ pipeline{
             steps{
                 echo "Building docker image"
                 container('docker') {
-                    sh "docker build -t ${ORIGIN_REPO}/${REPO}:${IMAGE_TAG} ."
+                    sh "docker build -t ${ORIGIN_REPO}/${REPO} ."
+                    // sh "docker run -d -p 5000:5000 --restart=always --name registry registry:2"
+                    // sh "docker run -d -p 5000:5000 --name registry registry:2"
                     // sh "docker build -t halilintar8/my-emoji-search:latest ."
                 }
             }          
@@ -57,6 +59,7 @@ pipeline{
         stage("Push image to Docker Hub") {
             steps {
                 echo "${IMAGE_TAG}"
+                echo "latestb"
                 container('docker') {
                     echo "Push docker image to hub.docker.com"
                     script {
