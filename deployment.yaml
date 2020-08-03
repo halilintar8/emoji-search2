@@ -1,5 +1,5 @@
+apiVersion: extensions/v1beta1
 kind: Deployment
-apiVersion: apps/v1
 metadata:
   name: my-emoji-search
 spec:
@@ -14,22 +14,26 @@ spec:
     spec:
       containers:
         - name: my-emoji-search
-          image: localhost:5000/my-emoji-search
+          # image: localhost:5000/my-emoji-search
+          image: ${ORIGIN_REPO}/${REPO}:${IMAGE_TAG}
           imagePullPolicy: Always
           ports:
-            - containerPort: 80
-      restartPolicy: Always
+            - containerPort: 8080
+      # restartPolicy: Always
+      
 ---
-kind: Service
 apiVersion: v1
+kind: Service
 metadata:
   name: my-emoji-search
 spec:
-  type: NodePort
+  # type: NodePort
+  type: LoadBalancer
   ports:
     - port: 80
-      targetPort: 80
-      protocol: TCP
-      nodePort: 31000
+      targetPort: 8080
+      name: my-emoji-search
+      # protocol: TCP
+      # nodePort: 31000
   selector:
     app: my-emoji-search
