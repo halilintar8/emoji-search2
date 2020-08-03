@@ -48,7 +48,7 @@ pipeline{
           steps{
                 container('docker') {
                     echo "Building docker image"
-                    sh "docker build -t ${ORIGIN_REPO}/${REPO}:${IMAGE_TAG} ."
+                    sh "docker build -t ${ORIGIN_REPO}/${REPO} ."
                 }
           }          
         }
