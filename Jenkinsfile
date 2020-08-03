@@ -50,7 +50,7 @@ pipeline{
                 echo "building docker image"                
                 container('docker') {
                     // sh "docker ps -a"
-                    sh "docker rmi 8eeadf3757f4 dfc29bfa7d41"
+                    // sh "docker rmi 8eeadf3757f4 dfc29bfa7d41"
                     sh "docker images"
                     sh "docker build -t ${ORIGIN_REPO}/${REPO} ."
                     // sh "docker run -d -p 5000:5000 --restart=always --name registry registry:2"
