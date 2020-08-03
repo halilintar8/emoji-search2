@@ -46,9 +46,7 @@ pipeline{
 
         stage('Docker Build Image') {
             steps{
-                echo "building docker image"
-                echo "${ORIGIN_REPO}/${REPO}"
-                echo "${ORIGIN_REPO}/${REPO}:${IMAGE_TAG}"
+                echo "building docker image"                
                 container('docker') {
                     sh "docker ps -a"
                     sh "docker build -t ${ORIGIN_REPO}/${REPO} ."
@@ -63,7 +61,7 @@ pipeline{
         stage('Push Docker Image') {       
             steps {
                 echo "${ORIGIN_REPO}/${REPO}"
-                echo "${ORIGIN_REPO}/${REPO}:${IMAGE_TAG}"
+                // echo "${ORIGIN_REPO}/${REPO}:${IMAGE_TAG}"
                 container('docker') {
                   echo "Push docker image to hub.docker.com"
                     script {                      
@@ -73,8 +71,8 @@ pipeline{
                         //app.push("${env.DOCKER_IMAGE_NAME}")
                         //app.push("latest")
 
-                        sh "docker tag halilintar8/my-emoji-search halilintar8/my-emoji-search:latest"
-                        sh "docker push halilintar8/my-emoji-search:latest"
+                        sh "docker tag ${ORIGIN_REPO}/${REPO} ${ORIGIN_REPO}/${REPO}:latest"
+                        sh "docker push ${ORIGIN_REPO}/${REPO}:latest"
                         // sh "docker tag ${ORIGIN_REPO}/${REPO} ${ORIGIN_REPO}/${REPO}:${IMAGE_TAG}"
                         // sh "docker push ${ORIGIN_REPO}/${REPO}:${IMAGE_TAG}"
 
@@ -106,6 +104,7 @@ pipeline{
         
         stage('Deploy to Kubernetes') {
             steps {
+                /// echo "${ORIGIN_REPO}/${REPO}:${IMAGE_TAG}"
                 container('kubectl') {
                     echo "Deploy to Kubernetes Cluster"
                     script {
