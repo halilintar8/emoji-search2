@@ -48,8 +48,8 @@ pipeline{
           steps{
                 container('docker') {
                     echo "Building docker image"
-                    // sh "docker build -t ${ORIGIN_REPO}/${REPO} ."
-                    sh "docker build -t halilintar8/my-emoji-search:latest ."
+                    sh "docker build -t ${ORIGIN_REPO}/${REPO} ."
+                    // sh "docker build -t halilintar8/my-emoji-search:latest ."
                 }
           }          
         }
@@ -58,10 +58,14 @@ pipeline{
             steps {
                 container('docker') {
                   echo "Push docker image to hub.docker.com"
+                  echo "${IMAGE_TAG}"
                     script {                      
                       docker.withRegistry('', 'hub_docker_halilintar8') {
-                        sh "docker tag ${ORIGIN_REPO}/${REPO} ${ORIGIN_REPO}/${REPO}:${IMAGE_TAG}"
-                        sh "docker push ${ORIGIN_REPO}/${REPO}:${IMAGE_TAG}"
+                        // sh "docker tag ${ORIGIN_REPO}/${REPO} ${ORIGIN_REPO}/${REPO}:${IMAGE_TAG}"
+                        // sh "docker push ${ORIGIN_REPO}/${REPO}:${IMAGE_TAG}"
+
+                        sh "docker tag halilintar8/my-emoji-search halilintar8/my-emoji-search:latest"
+                        sh "docker push halilintar8/my-emoji-search:latest"
                         
                       }
                     }
