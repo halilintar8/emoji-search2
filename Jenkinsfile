@@ -49,7 +49,8 @@ pipeline{
             steps{
                 echo "building docker image"                
                 container('docker') {
-                    sh "docker ps -a"
+                    // sh "docker ps -a"
+                    sh "docker images"
                     sh "docker build -t ${ORIGIN_REPO}/${REPO} ."
                     // sh "docker run -d -p 5000:5000 --restart=always --name registry registry:2"
                     // sh "docker run -d -p 5000:5000 --name registry registry:2"
